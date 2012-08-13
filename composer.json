@@ -1,0 +1,25 @@
+{
+	name: "CustomScripts/CSCoreBundle",
+	type: "library",
+	description: "Core Bundle for all Symfony2 Development",
+	keywords: [
+		"core-bundle"
+	],
+	homepage: "http://customscripts.co.za",
+	license: "MIT",
+	authors: [
+		{
+			name: "Pierre du Plessis",
+			email: "info@customscripts.co.za"
+		}
+	],
+	require: {
+		php: ">=5.3.3",
+		symfony/symfony: "dev-master"		
+	},
+	autoload: {
+		psr-0: {
+			CS: "src/"
+		}
+	}
+}
