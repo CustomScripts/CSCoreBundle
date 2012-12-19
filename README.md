@@ -1,4 +1,4 @@
 CSCoreBundle
 ============
 
-Core Bundle for all Symfony2 type development
+This bundle is used as the core for all bundles developed by CustomScripts
