@@ -1,5 +1,5 @@
 {
-    "name": "customscripts/cs-core-bundle",
+    "name": "customscripts/core-bundle",
     "type": "library",
     "description": "Core Bundle for all Symfony2 Development",
     "keywords": [
