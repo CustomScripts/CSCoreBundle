@@ -1,5 +1,5 @@
 {
-    "hash": "1df95dffe8a3d7b3e512cd4151f6e959",
+    "hash": "cf711ea74ecd8aaf186789d55e1ed362",
     "packages": [
         {
             "name": "doctrine/common",
@@ -264,7 +264,7 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "symfony/symfony": 20
-    }
+    "stability-flags": [
+
+    ]
 }
