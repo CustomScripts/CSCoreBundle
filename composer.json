@@ -16,7 +16,7 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "symfony/symfony" : "v2.2.0-BETA1"
+        "symfony/symfony" : "v2.2.x-dev"
     },
     "autoload": {
         "psr-0": {
