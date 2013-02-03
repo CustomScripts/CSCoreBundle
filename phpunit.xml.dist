@@ -3,15 +3,16 @@
 <phpunit bootstrap="./vendor/autoload.php" colors="true">
     <testsuites>
         <testsuite name="CSCoreBundle">
-            <directory suffix="Test.php">./Tests</directory>
+            <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>./src/CS/CoreBundle</directory>
+            <directory>./tests</directory>
             <exclude>
                 <directory>./src/CS/CoreBundle/Resources</directory>
+                <directory>./src/CS/CoreBundle/Tests</directory>
                 <directory>./vendor</directory>
             </exclude>
         </whitelist>
