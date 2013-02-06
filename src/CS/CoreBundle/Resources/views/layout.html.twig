@@ -13,13 +13,13 @@
     <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        {% block stylsheets %}
-        {% stylesheets
-          'bundles/cscore/css/styles.css'
-          filter="cssrewrite,?yui_css"
-        %}
-          <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
-        {% endstylesheets %}
+        {% block stylesheets %}
+            {% stylesheets
+              'bundles/cscore/css/styles.css'
+              filter="cssrewrite,?yui_css"
+            %}
+              <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
+            {% endstylesheets %}
       {% endblock stylesheets %}
 
     <script type="text/javascript" src="{{ asset('bundles/cscore/js/modernizr.min.js') }}"></script>
@@ -49,7 +49,7 @@
           "@CSCoreBundle/Resources/public/js/script.js"
           filter="?yui_js"
         %}
-          <script defer src="{{ asset_url }}"></script>
+          <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
       {% endblock javascripts %}
 
