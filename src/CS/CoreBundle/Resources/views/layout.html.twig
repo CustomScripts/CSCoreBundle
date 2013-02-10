@@ -14,13 +14,21 @@
         <meta name="viewport" content="width=device-width">
 
 		{% stylesheets
-			'bundles/cscore/css/styles.css'
-			filter="cssrewrite,?yui_css"
+			'bundles/cscore/less/styles.less'
+			filter="less, cssrewrite,?yui_css"
 		%}
 			<link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
 		{% endstylesheets %}
 
 		<script type="text/javascript" src="{{ asset('bundles/cscore/js/modernizr.min.js') }}"></script>
+
+		{% javascripts
+			"@CSCoreBundle/Resources/public/js/jquery-1.9.0.min.js"
+			filter="?yui_js"
+		%}
+			<script src="{{ asset_url }}"></script>
+		{% endjavascripts %}
+
 	</head>
 	<body>
 		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
@@ -37,15 +45,15 @@
 		</footer>
 
 		{% javascripts
-			"@CSCoreBundle/Resources/public/js/jquery-1.9.0.min.js"
 			"@CSCoreBundle/Resources/public/js/bootstrap.min.js"
-			"@CSCoreBundle/Resources/public/js/backbone.js"
 			"@CSCoreBundle/Resources/public/js/underscore.js"
+			"@CSCoreBundle/Resources/public/js/backbone.js"
 			"@CSCoreBundle/Resources/public/js/plugins.js"
 			"@CSCoreBundle/Resources/public/js/script.js"
+			"@CSCoreBundle/Resources/public/js/plugins/*.js"
 			filter="?yui_js"
 		%}
-			<script defer src="{{ asset_url }}"></script>
+			<script src="{{ asset_url }}"></script>
 		{% endjavascripts %}
 	</body>
 </html>
