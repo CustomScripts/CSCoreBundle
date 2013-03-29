@@ -10,7 +10,7 @@
 		"className"	: "content",
 		"icon" : '<i class="icon-plus-sign"></i>',
 		"addlink" : _.template('<a href="#" class="add_form_collection_link"><%= icon %> <%= label %></a>'),
-		"legend" : _.template('<legend class="collection-heading"><h<%= heading %>><%= label %> <%= counter %></h<%= heading %>></legend>'),
+		"legend" : _.template('<h<%= heading %> class="collection-heading"><%= label %> <%= counter %></h<%= heading %>>'),
 		"counter" : 0,
 		"heading" : 2,
 
@@ -22,7 +22,7 @@
 			var $this = this,
 				add_link = $(this.createAddLink()).on("click", function(e) { e.preventDefault(); $this.addForm($this, this); });
 
-			this.$el.append(add_link);
+			this.$el.before(add_link);
 			
 			if(this.$el.find('fieldset:first').children().length > 0)
 			{
@@ -37,21 +37,28 @@
         "addForm" : function($this, l) {
 	
         	var prototype  = this.$el.attr('data-prototype'),
-        		form = $(prototype.replace(/__name__/g, this.$el.children('.control-group').length)),
+        		form = $(prototype.replace(/__name__/g, this.$el.siblings('.child').length)),
         		parents = this.$el.parents('.form-collection').length,
         		heading = this.heading + (parents === 2 ? 3 : parents),
         		scripts = new Array();
 		    
 		    form.find('fieldset:first').prepend(this.legend({"heading" : heading, "label" : this.options.label, "counter" : ++this.counter}));
 		    
-		    var form = $('<div />').addClass('content').append(form);
+		    var div = $('<div />').addClass('child');
+		    
+		    if(parents !== 2)
+		    {
+		    	div.addClass('well');
+		    }
+
+		    div.append(form);
 		    
 		    /*if(typeof form[1] !== undefined)
 		   	{
 		    	scripts.push($(form[1]).html());
 		   	}*/
 		    
-		    var view = new FormCollectionView({"el" : form}),
+		    var view = new FormCollectionView({"el" : div}),
 		    	el = view.render().el;
 
 		    $(l).before(el);
@@ -98,9 +105,12 @@
 	});
 	
 	$.fn.formCollection = function(options) {
-		var view = new MasterView($.extend({"el" : this}, options));
+		
+		$(this).each(function(){
+			var view = new MasterView($.extend({"el" : this}, options));
+		});
 	
-		return view;
+		return this;
 	};
 
 })(window.jQuery, Backbone, _);
