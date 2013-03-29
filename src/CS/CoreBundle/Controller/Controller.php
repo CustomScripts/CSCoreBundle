@@ -11,44 +11,43 @@
 
 namespace CS\CoreBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller as CoreController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 
-class Controller extends CoreController {
+class Controller extends BaseController {
 
-	/**
-	 * Return a instance of the doctrine entity manager
-	 *
-	 * @return \Doctrine\Orm\EntityManager
-	 */
-	public function getEm()
-	{
-		// TODO : get entity manager from configuration (So we can use odm entity anagers as well)
-		return $this->get('doctrine.orm.entity_manager');
-	}
+    /**
+     * Return a instance of the doctrine entity manager
+     *
+     * @return \Doctrine\Orm\EntityManager
+     */
+    public function getEm()
+    {
+        return $this->get('doctrine')->getManager();
+    }
 
-	/**
-	 * Adds a message to the session flash
-	 *
-	 * @param string $message The message to add to the session flash
-	 * @param string $type The flash message type (notice, success, error etc)
-	 *
-	 * @return Controller
-	 */
-	public function flash($message, $type = 'notice')
-	{
-		$this->get('session')->getFlashBad()->add($type, $message);
+    /**
+     * Adds a message to the session flash
+     *
+     * @param string $message The message to add to the session flash
+     * @param string $type The flash message type (notice, success, error etc)
+     *
+     * @return Controller
+     */
+    public function flash($message, $type = 'notice')
+    {
+        $this->get('session')->getFlashBag()->add($type, $message);
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Translates a message
-	 *
-	 * @param string $message
-	 * @return string
-	 */
-	public function trans($message)
-	{
-		return $this->get('translator')->trans($message);
-	}
+    /**
+     * Translates a message
+     *
+     * @param string $message
+     * @return string
+     */
+    public function trans($message)
+    {
+        return $this->get('translator')->trans($message);
+    }
 }

@@ -15,21 +15,20 @@
 
         {% block stylesheets %}
             {% stylesheets
-			'bundles/cscore/less/styles.less'
-			filter="less, cssrewrite,?yui_css"
+            'bundles/cscore/less/styles.less'
+            filter="less, cssrewrite,?yui_css"
             %}
               <link rel="stylesheet" href="{{ asset_url }}" type="text/css" media="all" />
             {% endstylesheets %}
       {% endblock stylesheets %}
 
-    <script type="text/javascript" src="{{ asset('bundles/cscore/js/modernizr.min.js') }}"></script>
-
-		{% javascripts
-			"@CSCoreBundle/Resources/public/js/jquery-1.9.0.min.js"
-			filter="?yui_js"
-		%}
-			<script src="{{ asset_url }}"></script>
-		{% endjavascripts %}
+      {% javascripts
+          "@CSCoreBundle/Resources/public/js/modernizr.min.js"
+          "@CSCoreBundle/Resources/public/js/jquery-1.9.0.min.js"
+          filter="?yui_js"
+      %}
+          <script src="{{ asset_url }}"></script>
+      {% endjavascripts %}
 
   </head>
   <body>
@@ -39,8 +38,8 @@
       {{ block('header') }}
     </header>
 
-    <div role="main" class="container">
-      {{ block('content') }}
+    <div role="main" class="container-fluid">
+        {{ block('body') }}
     </div>
 
     <footer align="center">
@@ -51,13 +50,13 @@
         {% javascripts
           "@CSCoreBundle/Resources/public/js/bootstrap.min.js"
           "@CSCoreBundle/Resources/public/js/underscore.js"
-			"@CSCoreBundle/Resources/public/js/backbone.js"
+          "@CSCoreBundle/Resources/public/js/backbone.js"
           "@CSCoreBundle/Resources/public/js/plugins.js"
+          "@CSCoreBundle/Resources/public/js/plugins/*.js"
           "@CSCoreBundle/Resources/public/js/script.js"
-			"@CSCoreBundle/Resources/public/js/plugins/*.js"
           filter="?yui_js"
         %}
-			<script src="{{ asset_url }}"></script>
+            <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
       {% endblock javascripts %}
 
