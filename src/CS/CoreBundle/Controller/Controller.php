@@ -26,6 +26,14 @@ class Controller extends BaseController {
     }
 
     /**
+     * Get a doctrine repository
+     */
+    public function getRepository($repository)
+    {
+        return $this->getEm()->getRepository($repository);
+    }
+
+    /**
      * Adds a message to the session flash
      *
      * @param string $message The message to add to the session flash
