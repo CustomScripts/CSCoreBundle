@@ -25,12 +25,14 @@ class ArrayUtil
      */
     public static function column(array $array, $column)
     {
-        if (!is_array($array) || empty($array)) {
+        if (empty($array)) {
             throw new \Exception("Array cannot be empty");
         }
 
+        reset($array);
+
         // Forward-compatible with PHP 5.5
-        if (function_exists('array_column')) {
+        if (function_exists('array_column') && is_array($array[key($array)])) {
             return array_column($array, $column);
         }
 
