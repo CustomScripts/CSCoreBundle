@@ -1,5 +1,4 @@
 {#
- #
  # This file is part of the CSCoreBundle package.
  #
  # (c) Pierre du Plessis <info@customscripts.co.za>
@@ -8,18 +7,16 @@
  # file that was distributed with this source code.
 #}
 
-{% extends "CSCoreBundle::layout.html.twig" %}
+{% extends "CSCoreBundle:Layout:base.html.twig" %}
 
-{% block content %}
-	<div class="row-fluid">
-		<aside class="span3 installation-progress">
-			{{ block('sidebar') }}
-		</aside>
+{% set sidebar_width = sidebar_width|default(3) %}
+{% set content_width = content_width|default(0) ? content_width : 12 - sidebar_width %}
 
-		<section class="span9 content">
-			{{ block('body') }}
-		</section>
-	</div>
-
-	<hr />
-{% endblock content %}
+{% block body %}
+	<aside class="col-md-{{ sidebar_width }}">
+		{{ block('sidebar') }}
+	</aside>
+	<section class="col-md-{{ content_width }}">
+		{{ block("content") }}
+	</section>
+{% endblock body %}

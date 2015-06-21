@@ -13,7 +13,15 @@ namespace CS\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller as BaseController;
 
-class Controller extends BaseController {
+abstract class Controller extends BaseController
+{
+    /**
+     * Get a doctrine repository
+     */
+    public function getRepository($repository)
+    {
+        return $this->getEm()->getRepository($repository);
+    }
 
     /**
      * Return a instance of the doctrine entity manager
@@ -26,18 +34,10 @@ class Controller extends BaseController {
     }
 
     /**
-     * Get a doctrine repository
-     */
-    public function getRepository($repository)
-    {
-        return $this->getEm()->getRepository($repository);
-    }
-
-    /**
      * Adds a message to the session flash
      *
      * @param string $message The message to add to the session flash
-     * @param string $type The flash message type (notice, success, error etc)
+     * @param string $type    The flash message type (notice, success, error etc)
      *
      * @return Controller
      */
@@ -52,6 +52,7 @@ class Controller extends BaseController {
      * Translates a message
      *
      * @param string $message
+     *
      * @return string
      */
     public function trans($message)

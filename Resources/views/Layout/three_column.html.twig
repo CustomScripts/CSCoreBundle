@@ -1,0 +1,26 @@
+{#
+ # This file is part of the CSCoreBundle package.
+ #
+ # (c) Pierre du Plessis <info@customscripts.co.za>
+ #
+ # For the full copyright and license information, please view the LICENSE
+ # file that was distributed with this source code.
+#}
+
+{% extends "CSCoreBundle:Layout:base.html.twig" %}
+
+{% set sidebar_left_width = sidebar_left_width|default(3) %}
+{% set sidebar_right_width = sidebar_right_width|default(3) %}
+{% set content_width = content_width|default(0) ? content_width : 12 - (sidebar_left_width + sidebar_right_width) %}
+
+{% block body %}
+    <aside class="col-md-{{ sidebar_left_width }}">
+        {{ block('sidebar_left') }}
+    </aside>
+    <section class="col-md-{{ content_width }}">
+        {{ block("content") }}
+    </section>
+    <aside class="col-md-{{ sidebar_right_width }}">
+        {{ block('sidebar_right') }}
+    </aside>
+{% endblock body %}
